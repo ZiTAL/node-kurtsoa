@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="eu">
+<head>
+    <meta charset="utf-8">
+    <title>nodeJS kurtsoa</title>
+
+    <link type="text/css" rel="stylesheet" href="resources/css/kinout-1.0.css">
+    <link type="text/css" rel="stylesheet" href="resources/css/theme.kinout.css">
+    <link type="text/css" rel="stylesheet" href="resources/css/rainbow/blackboard.css">
+</head>
+
+<body>
+    <div class="kinout">
+
+        <section>
+            <article>
+                <h1>node<mark>JS</mark> kurtsoa</h1>
+                <div>
+                </div>
+            </article>
+        </section>
+    </div>
+    <script type="text/javascript" src="resources/js/socket.io.js"></script>
+    <script type="text/javascript" src="resources/js/QuoJS.js"></script>
+    <script type="text/javascript" src="resources/js/raf.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.Constants.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.Element.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.Events.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.Router.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.Step.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.Url.js"></script>
+    <script type="text/javascript" src="resources/js/Kinout.View.js"></script>
+    <script>
+	$$(document).ready(function()
+	{
+		KINOUT.init();        
+		var socket = io.connect("http://"+window.location.host+":"+"1980");
+        if(typeof(socket)!='undefined')
+        {
+            socket.on('push', function(direction)
+            {
+                KINOUT.Router.direction(direction);
+            });
+        }
+    });
+    </script>
+    <script type="text/javascript" src="resources/js/rainbow/rainbow.min.js"></script>
+    <script type="text/javascript" src="resources/js/rainbow/language/generic.js"></script>
+
+</body>
+</html>
