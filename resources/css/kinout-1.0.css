@@ -69,3 +69,12 @@ cite{float:right;padding:16px;font-size:0.9em;font-style:italic;font-weight:bold
 .column.medium{width:29%;}
 .column.small{width:21.05%;}
 pre{position:relative;width:640px;left:50%;margin:1% 0% 1% -320px !important;padding:0px;background:#0B1022;color:#ffffff;text-align:left;font-size:14px;line-height:150%;word-wrap:break-word;}
+
+/*
+estilo barridxek :D
+*/
+.kinout .copyleft{position:absolute;bottom:2%;left:1.5%;width:10%;z-index:1980;color:#ffffff;font-size:12px;line-height:6px;text-align:left;opacity:0.5 !important;}.kinout .copyleft a{display:block;font-size:36px;line-height:36px;opacity:1.0;color:#ffffff;font-weight:bold;}
+.kinout u li a
+{
+	color: #fff;
+}

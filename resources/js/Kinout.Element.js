@@ -30,7 +30,7 @@
       if (config.template) {
         _el.parent.addClass(config.template);
       }
-      return _el.parent.prepend(MARKUP.GLOW).append(MARKUP.COPYRIGHT);
+      return _el.parent.prepend(MARKUP.GLOW).append(MARKUP.COPYRIGHT).append(MARKUP.COPYLEFT);
     };
     slides = function() {
       if (!(_el.slides.length > 0)) {
