@@ -22,16 +22,16 @@
         <section>
             <article>
                 <ul>
-                    <li>Indizea: </li>
+                    <li><h2>Indizea: </h2></li>
                     <li><a href="#/">nodejs kurtsoa</a></li>
                     <li><a href="#/1">Indizea</a></li>
                     <li><a href="#/2">nodejs-ri buruz</a></li>
                     <li>
-                        <ul>
-                            <li><a href="#/2/1">zer da?</a></li>
+                        <ol>
+                            <li><a href="#/2/1">Zer da?</a></li>
+                            <li><a href="#2/2">Egileari buruz</a></li>
                             <li><a href=""></a></li>
-                            <li><a href=""></a></li>
-                        </ul>
+                        </ol>
                     </li>
                 </ul>
             </article>
@@ -39,14 +39,22 @@
 
         <section>
             <article>
-                nodejs-ri buruz
+                nodejs-ri buruzaaaaaasassasassasasasas
             </article>
             <article>
-                zer da?
+                <h2>Zer da?</h2>
+                <div>
+                    Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.                    
+                </div>
             </article>            
+            <article>
+                <h2>Egileari buruz</h2>
+                <div>
+
+                </div>
+            </article>
         </section>
     </div>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="resources/js/socket.io.js"></script>
     <script type="text/javascript" src="resources/js/QuoJS.js"></script>
     <script type="text/javascript" src="resources/js/raf.js"></script>
@@ -60,19 +68,19 @@
     <script type="text/javascript" src="resources/js/Kinout.View.js"></script>
     <script type="text/javascript">
     <!--
-    $(window).on('load', function()
+    $$(window).on('load', function()
     {
 		KINOUT.init();
 
-        $('ul li a').each(function()
+        $$('ul li a').each(function()
         {
-            var href = $(this).attr('href');
+            var href = $$(this).attr('href');
             if(href.match(/^#/gi))
             {
-                $(this).on('click', function(e)
+                $$(this).on('click', function(e)
                 {
                     e.preventDefault();
-                    window.location.href = $(this).attr('href');
+                    window.location.href = $$(this).attr('href');
                     KINOUT.Url.read();
                 });
             }
