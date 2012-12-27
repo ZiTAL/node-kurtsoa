@@ -38,29 +38,32 @@
                         <ol><a href="#/3/1">gnu/linux</a></ol>
                         <ol><a href="#/3/2">windows eta osx</a></ol>
                     </li>
+                    <li><a href="#/4">Kontsolan lanean</a></li>
                 </ul>
             </article>
         </section>
 
         <section>
-            <article>
-                <h1>nodejs-ri buruz</h1>
-            </article>
+            <header class="box">
+                <h2>nodejs-ri buruz</h2>
+            </header>
             <article data-size="middle">
+                <header class="box white"><h4>zer da?</h4></header>
                 <blockquote>
                     Node.js Chrome nabigatzailearen javascript vp8 motorrean oinarrituriko plataforma, sarerako aplikazio eskalagarriak sortzeko erreza da. Gertaera-bultzaera, blokeaezin Sarrera/Irteera modeloa erabiltzen dauelarik pisu txiki eta eraginkorrak diren aplikazioak egiteko. Denbora errealen datua asko partekatzeko egokia.
                 </blockquote>
-                <cite>http://nodejs.org</cite>
+                <cite>http://nodejs.org</cite>                
             </article>            
             <article>
-                <h2>Egileari buruz</h2>
-                <img src="http://i.imgur.com/Yvct6.png" alt="Ryan Dahl" title="Ryan Dahl" />
+                <header class="box white"><h4>Egileari buruz</h4></header>
+                <p><img src="http://i.imgur.com/Yvct6.png" alt="Ryan Dahl" title="Ryan Dahl" /></p>
                 <p>Ryan Dahl:</p>
                 <p>
                     Javascript-en "push/pull" Sarrera/Irteera API-aren falta dela eta hasi zen nodejs sortzen.
-                </p>
+                </p>                
             </article>
             <article>
+                <header class="box white"><h4>Ryan Dahl esandako zita pare bat</h4></header>
                 <blockquote>
                 Batzutan gauza on batzuk kendu behar dozuz gauza bikainak lortzeko.
                 Gehienetan arazoen soluziorik errezena zeure aurrean egon leike.
@@ -69,30 +72,48 @@
             </article>
         </section>
         <section>
+            <header class="box"><h2>Zelan instalatu</h2></header>
             <article>
-            zelan instalatu honako sistema honetan: gnu/linux, windows edota osx
+                <p>nodejs iturburutik konpilatuta edo sistemetarako prestatutako paketeekaz instalatu lei.</p>
             </article>
             <article>
-                <p>gnu/linux-en:</p>
-                debian:
+                <header class="box white"><h4>gnu/linux</h4></header>
+                <p>
+                    debian:
+                </p>
                 <pre class="margin-top" contenteditable="true">
-                <code data-language="bash">
                     aptitude install nodejs
-                </code>
                 </pre>
                 archlinux:
                 <pre class="margin-top" contenteditable="true">
-                <code data-language="bash">
                     pacman -S nodejs
-                </code>
                 </pre>                                 
             </article>
             <article>
-                <p>Windows eta osx:</p>
+                <header class="box white"><h4>Windows eta OSX</h4></header>
                 <p>Jarraitu web honetako instrukzioak:
                     <a href="http://www.nodejs.org/download/">http://www.nodejs.org/download/</a>
                 </p>
-                <p>Instalatu eta gero sartu nodejs karpeta windows-eko PATH-ean</p>
+                <p>Instalatu eta gero sartu nodejs karpeta windows-eko PATH-ean:</p>
+                <p><a href="http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx">http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx</a>
+            </article>
+        </section>
+        <section>
+            <article>
+                <header>Kontsolan lanean</header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    1 + 2
+                </code>                
+                </pre>
+            </article>
+        </section>    
+        <section>
+            <article>
+                <header>Aldagai globalak</header>
+                <pre class="margin-top" contenteditable="true">
+                    console.log(this);
+                </pre>                
             </article>
         </section>
     </div>
@@ -123,6 +144,19 @@
                     e.preventDefault();
                     window.location.href = $$(this).attr('href');
                     KINOUT.Url.read();
+                });
+            }
+        });
+
+        $$('a').each(function()
+        {
+            var href = $$(this).attr('href');
+            if(href.match(/^http/gi))
+            {
+                $$(this).on('click', function(e)
+                {
+                    e.preventDefault();
+                    window.open($$(this).attr('href'));
                 });
             }
         });

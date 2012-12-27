@@ -60,8 +60,36 @@ h5{font-size:1.1em;}
 .text.size8{font-size:1.8em;}
 .text.size9{font-size:1.9em;}
 .text.size10{font-size:2.0em;}
-blockquote{margin-top:25%;quotes:"\201C" "\201D";background:inherit;background:rgba(0, 0, 0, 0.1);padding:32px 16px;font-size:1.4em;line-height:1.2em;font-weight:bold;}blockquote:before{margin-right:8px;content:open-quote;opacity:0.5;font-size:1.25em;}
-blockquote:after{margin-left:8px;content:close-quote;opacity:0.5;font-size:1.25em;}
+
+blockquote
+{
+/*	
+	margin-top: 25%;
+*/
+	margin: auto;	
+	vertical-align: middle;
+	quotes: "\201C" "\201D";
+	background: inherit;
+	background: rgba(0, 0, 0, 0.1);
+	padding: 32px 16px;
+	font-size: 1.4em;
+	line-height: 1.2em;
+	font-weight: bold;
+}
+blockquote:before
+{
+	margin-right: 8px;
+	content: open-quote;
+	opacity: 0.5;
+	font-size: 1.25em;
+}
+blockquote:after
+{
+	margin-left: 8px;
+	content: close-quote;
+	opacity: 0.5;
+	font-size: 1.25em;
+}
 [data-image] blockquote{background:rgba(0, 0, 0, 0.65);color:#ffffff;}
 cite{float:right;padding:16px;font-size:0.9em;font-style:italic;font-weight:bold;opacity:0.9;}
 [data-image] cite{color:#ffffff;text-shadow:0px 1px 0px rgba(0, 0, 0, 0.75);}

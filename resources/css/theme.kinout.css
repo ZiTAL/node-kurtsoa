@@ -13,3 +13,14 @@
 .kinout .bordered{border:solid 8px #ffffff;}
 
 .kinout a{color: #fff000; }.kinout a:hover,.kinout a:active{color:#ffffff;}
+
+pre
+{
+	font-size: xx-large;
+	text-align: left;
+}
+
+p
+{
+	padding: 20px;
+}
