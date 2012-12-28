@@ -18,7 +18,7 @@
             </article>
         </section>
 
-        <!-- #1 nodejs-ri buruz -->
+        <!-- #/1 INDIZEA -->
         <section>
             <article>
                 <ul>
@@ -39,10 +39,12 @@
                         <ol><a href="#/3/2">windows eta osx</a></ol>
                     </li>
                     <li><a href="#/4">Kontsolan lanean</a></li>
+                    <li><a href="#/5">Aldagai globalak</a></li>
                 </ul>
             </article>
         </section>
 
+        <!-- #/2 nodejs-ri buruz -->
         <section>
             <header class="box">
                 <h2>nodejs-ri buruz</h2>
@@ -65,12 +67,14 @@
             <article>
                 <header class="box white"><h4>Ryan Dahl esandako zita pare bat</h4></header>
                 <blockquote>
-                Batzutan gauza on batzuk kendu behar dozuz gauza bikainak lortzeko.
-                Gehienetan arazoen soluziorik errezena zeure aurrean egon leike.
+                    Batzutan gauza on batzuk kendu behar dozuz gauza bikainak lortzeko.
+                    Gehienetan arazoen soluziorik errezena zeure aurrean egon leike.
                 </blockquote>                
                 <cite>Ryan Dahl</cite>
             </article>
         </section>
+
+        <!-- #/3 Zelan instalatu -->
         <section>
             <header class="box"><h2>Zelan instalatu</h2></header>
             <article>
@@ -98,80 +102,266 @@
                 <p><a href="http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx">http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx</a>
             </article>
         </section>
+
+        <!-- #/4 Kontsolan lanean -->
         <section>
             <article>
                 <header>Kontsolan lanean</header>
                 <pre class="margin-top" contenteditable="true">
                 <code data-language="javascript">
-                    1 + 2
+                1 + 2
                 </code>                
                 </pre>
-            </article>
+                </article>
         </section>    
+
+        <!-- #/5 Aldagai globalak -->
         <section>
+            <header>Aldagai globalak</header>
             <article>
-                <header>Aldagai globalak</header>
                 <pre class="margin-top" contenteditable="true">
                     console.log(this);
+                    process
+                    process.pid
+                    process.env
                 </pre>                
             </article>
         </section>
-    </div>
-    <script type="text/javascript" src="resources/js/socket.io.js"></script>
-    <script type="text/javascript" src="resources/js/QuoJS.js"></script>
-    <script type="text/javascript" src="resources/js/raf.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.Constants.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.Element.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.Events.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.Router.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.Step.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.Url.js"></script>
-    <script type="text/javascript" src="resources/js/Kinout.View.js"></script>
-    <script type="text/javascript">
-    <!--
-    $$(window).on('load', function()
-    {
-		KINOUT.init();
+        <section>            
+            <article>
+                <header>Hello World</header>
+                <pre class="margin-top" contenteditable="true">
+                    setTimeout(function()
+                    {
+                        console.log('world');
+                    }, 2000);
+                    console.log('hello ');                    
+                </pre>
+            </article>
+            <article>
+                <header>Hello World 2</header>
+                <pre class="margin-top" contenteditable="true">
+                    setInterval(function()
+                    {
+                        console.log('world');
+                    }, 2000);
+                    console.log('hello ');                    
+                </pre>
+            </article>            
+        </section>
+        <section>
+            <header>Web server</header>
+            <article>                
+                <pre class="margin-top" contenteditable="true">
+                    var http = require('http');
 
-        $$('ul li a').each(function()
-        {
-            var href = $$(this).attr('href');
-            if(href.match(/^#/gi))
+                    var server = http.createServer(function(req, res)
+                    {
+                            res.writeHead('200',
+                                    {
+                                            'content-type': 'text/plain'
+                                    }
+                            );
+                            res.end("hello world\n");
+                    });
+
+                    server.listen(8000);
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                    curl http://localhost:8000
+                </pre>                
+            </article>            
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                    curl -i http://localhost:8000
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                    HTTP/1.1 200 OK
+                    content-type: text/plain
+                    Connection: keep-alive
+                    Transfer-Encoding: chunked
+
+                    hello world                    
+                </pre>
+            </article>
+            <article>
+                <pre>
+                    Connection: keep-alive:
+                    Konexio irakunkorrak egiteko
+
+                    Transfer-Encoding: chunked:
+                    Erantzuna zatika hartzeko
+                </pre>
+            </article>
+            <article>                
+                <pre class="margin-top" contenteditable="true">
+                    var http = require('http');
+
+                    var server = http.createServer(function(req, res)
+                    {
+                        res.writeHead('200',
+                            {
+                                'content-type': 'text/plain'
+                            }
+                        );
+                        res.write("hello\n");
+                        setTimeout(function()
+                        {
+                            res.end("world\n")
+                        }, 1500);
+                    });
+
+                    server.listen(8000);
+                </pre>
+            </article>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                    ab -n 100 -c 100 http://127.0.0.1:8000/
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                    Concurrency Level:      100
+                    Time taken for tests:   1.523 seconds
+                    Complete requests:      100
+                    Failed requests:        0
+                    Write errors:           0
+                    Total transferred:      7600 bytes
+                    HTML transferred:       1200 bytes
+                    Requests per second:    65.66 [#/sec] (mean)
+                    Time per request:       1523.004 [ms] (mean)
+                    Time per request:       15.230 [ms] (mean, across all concurrent requests)
+                    Transfer rate:          4.87 [Kbytes/sec] received                    
+                </pre>                
+            </article>            
+        </section>
+        <section>
+            <header>TCP server</header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                    var net = require('net');
+
+                    var server = net.createServer(function(socket)
+                    {
+                        socket.write("Hello\n");
+                        socket.end("world\n");
+                    });
+
+                    server.listen(8000);                    
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                    nc localhost 8000
+                    telnet localhost 8000
+                </pre>
+            </article>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                    var net = require('net');
+
+                    var sockets = [];
+
+                    var server = net.createServer(function(socket)
+                    {
+                        sockets.push(socket);
+
+                        socket.on('data', function(data)
+                        {
+                            for(var i in sockets)
+                            {
+                                if(socket!=sockets[i])
+                                    sockets[i].write(data);
+                            }
+                        });
+                    });
+
+                    server.listen(8000);                    
+                </pre>
+            </article>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+            var net = require('net');
+
+            var sockets = [];
+
+            var server = net.createServer(function(socket)
             {
-                $$(this).on('click', function(e)
+                sockets.push(socket);
+
+                socket.on('data', function(data)
                 {
-                    e.preventDefault();
-                    window.location.href = $$(this).attr('href');
-                    KINOUT.Url.read();
+                    for(var i in sockets)
+                    {
+                        if(socket!=sockets[i])
+                            sockets[i].write(data);
+                    }
                 });
-            }
-        });
 
-        $$('a').each(function()
-        {
-            var href = $$(this).attr('href');
-            if(href.match(/^http/gi))
-            {
-                $$(this).on('click', function(e)
+                socket.on('end', function()
                 {
-                    e.preventDefault();
-                    window.open($$(this).attr('href'));
+                    // remove socket from array
+                    var index = sockets.indexOf(socket);
+                    if(index!='-1')
+                        sockets.splice(index, 1);       
                 });
-            }
-        });
-
-		var socket = io.connect("http://"+window.location.host+":"+"1980");
-        if(typeof(socket)!='undefined')
-        {
-            socket.on('push', function(direction)
-            {
-                KINOUT.Router.direction(direction);
             });
-        }
+
+            server.listen(8000);                    
+                </pre>
+            </article>
+        </section>
+        </div>
+        <script type="text/javascript" src="resources/js/socket.io.js"></script>
+        <script type="text/javascript" src="resources/js/QuoJS.js"></script>
+        <script type="text/javascript" src="resources/js/raf.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Constants.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Element.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Events.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Router.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Step.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Url.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.View.js"></script>
+        <script type="text/javascript">
+        $$(window).on('load', function()
+        {
+            KINOUT.init();
+
+            $$('ul li a').each(function()
+            {
+                var href = $$(this).attr('href');
+                if(href.match(/^#/gi))
+                {
+                    $$(this).on('click', function(e)
+                    {
+                        e.preventDefault();
+                        window.location.href = $$(this).attr('href');
+                        KINOUT.Url.read();
+                    });
+                }
+            });
+
+            $$('a').each(function()
+            {
+                var href = $$(this).attr('href');
+                if(href.match(/^http/gi))
+                {
+                    $$(this).on('click', function(e)
+                    {
+                        e.preventDefault();
+                        window.open($$(this).attr('href'));
+                    });
+                }
+            });
+
+            var socket = io.connect("http://"+window.location.host+":"+"1980");
+            if(typeof(socket)!='undefined')
+            {
+                socket.on('push', function(direction)
+                {
+                    KINOUT.Router.direction(direction);
+                });
+            }
     });
-    </script>
-    <script type="text/javascript" src="resources/js/rainbow/rainbow.min.js"></script>
-    <script type="text/javascript" src="resources/js/rainbow/language/generic.js"></script>
+</script>
+<script type="text/javascript" src="resources/js/rainbow/rainbow.min.js"></script>
+<script type="text/javascript" src="resources/js/rainbow/language/generic.js"></script>
 </body>
 </html>

@@ -96,7 +96,25 @@ cite{float:right;padding:16px;font-size:0.9em;font-style:italic;font-weight:bold
 .column{display:inline-block;top:0px;margin:0% 1%;}.column.big{width:44.9%;}
 .column.medium{width:29%;}
 .column.small{width:21.05%;}
-pre{position:relative;width:640px;left:50%;margin:1% 0% 1% -320px !important;padding:0px;background:#0B1022;color:#ffffff;text-align:left;font-size:14px;line-height:150%;word-wrap:break-word;}
+pre
+{
+	position:relative;
+	margin: 5px;
+/*	
+	width:640px;
+	left:50%;
+	margin:1% 0% 1% -320px !important;
+	padding:0px;
+*/	
+	background:#0B1022;
+	color:#ffffff;
+	text-align:left;
+/*	
+	font-size:14px;
+	line-height:150%;
+*/	
+	word-wrap:break-word;
+}
 
 /*
 estilo barridxek :D
