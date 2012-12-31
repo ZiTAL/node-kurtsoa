@@ -40,6 +40,12 @@
                     </li>
                     <li><a href="#/4">Kontsolan lanean</a></li>
                     <li><a href="#/5">Aldagai globalak</a></li>
+                    <li><a href="#/6">Hellow World</a></li>
+                    <li>
+                        <ol>
+                            <li><a href="#/6">Hellow World</a></li>
+                            <li><a href="#/6/1">Hellow World 2</a></li>
+                        </ol>
                 </ul>
             </article>
         </section>
@@ -106,10 +112,15 @@
         <!-- #/4 Kontsolan lanean -->
         <section>
             <article>
-                <header>Kontsolan lanean</header>
+                <header class="box"><h2>Kontsolan lanean</h2></header>
                 <pre class="margin-top" contenteditable="true">
                 <code data-language="javascript">
+                node
+                > 
+
                 1 + 2
+                function  foo() { return 1 + 2}
+                foo()
                 </code>                
                 </pre>
                 </article>
@@ -117,42 +128,49 @@
 
         <!-- #/5 Aldagai globalak -->
         <section>
-            <header>Aldagai globalak</header>
+            <header class="box"><h2>Aldagai globalak</h2></header>
             <article>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     console.log(this);
                     process
                     process.pid
                     process.env
+                </code>
                 </pre>                
             </article>
         </section>
         <section>            
             <article>
-                <header>Hello World</header>
+                <header class="box"><h2>Hello World</h2></header>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     setTimeout(function()
                     {
                         console.log('world');
                     }, 2000);
-                    console.log('hello ');                    
+                    console.log('hello ');       
+                </code>             
                 </pre>
             </article>
             <article>
-                <header>Hello World 2</header>
+                <header class="box"><h2>Hello World 2</h2></header>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     setInterval(function()
                     {
                         console.log('world');
                     }, 2000);
-                    console.log('hello ');                    
+                    console.log('hello ');       
+                </code>             
                 </pre>
             </article>            
         </section>
         <section>
-            <header>Web server</header>
+            <header class="box"><h2>Web zerbitzaria</h2></header>
             <article>                
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     var http = require('http');
 
                     var server = http.createServer(function(req, res)
@@ -166,35 +184,40 @@
                     });
 
                     server.listen(8000);
-                </pre>
-                <pre class="margin-top" contenteditable="true">
-                    curl http://localhost:8000
-                </pre>                
+                </code>
+                </pre>               
             </article>            
             <article>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
                     curl -i http://localhost:8000
+                </code>
                 </pre>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
                     HTTP/1.1 200 OK
                     content-type: text/plain
                     Connection: keep-alive
                     Transfer-Encoding: chunked
 
                     hello world                    
+                </code>
                 </pre>
             </article>
             <article>
-                <pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
                     Connection: keep-alive:
                     Konexio irakunkorrak egiteko
 
                     Transfer-Encoding: chunked:
                     Erantzuna zatika hartzeko
+                </code>
                 </pre>
             </article>
             <article>                
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     var http = require('http');
 
                     var server = http.createServer(function(req, res)
@@ -212,13 +235,17 @@
                     });
 
                     server.listen(8000);
+                </code>
                 </pre>
             </article>
             <article>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
                     ab -n 100 -c 100 http://127.0.0.1:8000/
+                </code>
                 </pre>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
                     Concurrency Level:      100
                     Time taken for tests:   1.523 seconds
                     Complete requests:      100
@@ -230,13 +257,15 @@
                     Time per request:       1523.004 [ms] (mean)
                     Time per request:       15.230 [ms] (mean, across all concurrent requests)
                     Transfer rate:          4.87 [Kbytes/sec] received                    
+                </code>
                 </pre>                
             </article>            
         </section>
         <section>
-            <header>TCP server</header>
+            <header class="box"><h2>TCP server</h2></header>
             <article>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     var net = require('net');
 
                     var server = net.createServer(function(socket)
@@ -246,14 +275,18 @@
                     });
 
                     server.listen(8000);                    
+                </code>
                 </pre>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
                     nc localhost 8000
                     telnet localhost 8000
+                </code>
                 </pre>
             </article>
             <article>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
                     var net = require('net');
 
                     var sockets = [];
@@ -273,10 +306,12 @@
                     });
 
                     server.listen(8000);                    
+                </code>
                 </pre>
             </article>
             <article>
                 <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
             var net = require('net');
 
             var sockets = [];
@@ -304,10 +339,98 @@
             });
 
             server.listen(8000);                    
+                </code>
                 </pre>
             </article>
         </section>
-        </div>
+        <section>
+            <header class="box"><h2>Debug</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                function foo()
+                {
+                    debugger;
+                    return 1 + 2;
+                }
+
+                foo();
+                </code>
+                </pre>                    
+            </article>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    node debug node-debug.js
+                </code>
+                </pre>      
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
+                    < debugger listening on port 5858
+                    connecting... ok
+                    break in debug-example.js:7
+                      5 }
+                      6 
+                      7 foo();
+                      8 
+                      9 });
+                    debug>
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
+                    backtrace
+                    next
+                </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>non-blocking adibidea</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    setInterval(function()
+    {
+        console.log('hello world');
+    }, 5000);
+
+
+    var http = require('http');
+
+    setInterval(function()
+    {
+        http.get(
+        {
+            host: 'google.com'
+        }, function(res)
+        {
+            console.log(res.headers);
+        });
+    }, 3000);
+
+    var server = http.createServer(function(req, res)
+    {
+        res.writeHead(200);
+
+        setTimeout(function()
+        {
+            res.end("Web server response");
+        }, 1000);
+    });
+
+    server.listen(8000);
+                </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <header>Moduloak</header>
+            <article>
+                <header class="box white"><h4>Ryan Dahl esandako zita pare bat</h4></header>
+            </article>
+        </section>
+        </div>        
         <script type="text/javascript" src="resources/js/socket.io.js"></script>
         <script type="text/javascript" src="resources/js/QuoJS.js"></script>
         <script type="text/javascript" src="resources/js/raf.js"></script>

@@ -15,7 +15,7 @@
   KINOUT.Constants = {
     MARKUP: {
       GLOW: "<div class='glow'></div>",
-      COPYRIGHT: "<div class='copyright'><a href='http://www.tapquo.com' onclick='window.open(this.href); return false;'>kinout</a>by tapquo</div>",
+      COPYRIGHT: "<div class='copyright'><a href='http://www.tapquo.com'>kinout</a>by tapquo</div>",
       COPYLEFT: "<div class='copyleft'><ul><li><a href='#/1'>Indizea</a></li></ul></div>",      
       PROGRESS: {
         horizontal: "<div class='progress horizontal' value='0' max='100'><span></span></div>",

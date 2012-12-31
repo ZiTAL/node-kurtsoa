@@ -24,3 +24,15 @@ p
 {
 	padding: 20px;
 }
+
+ul
+{
+	text-align: left;
+	margin-left: 100px;
+}
+
+ol
+{
+	text-align: left;
+	margin-left: 300px;	
+}
