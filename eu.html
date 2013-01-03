@@ -17,8 +17,7 @@
                 <h1>node<mark>JS</mark> kurtsoa</h1>            
             </article>
         </section>
-
-        <!-- #/1 INDIZEA -->
+        <!--
         <section>
             <article>
                 <ul>
@@ -74,7 +73,7 @@
                 </ul>
             </article>
         </section>
-
+        -->
         <!-- #/2 nodejs-ri buruz -->
         <section>
             <header class="box">
@@ -464,6 +463,7 @@
             </article>
         </section>
         </div>        
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="resources/js/socket.io.js"></script>
         <script type="text/javascript" src="resources/js/QuoJS.js"></script>
         <script type="text/javascript" src="resources/js/raf.js"></script>
@@ -478,6 +478,8 @@
         <script type="text/javascript">
         $$(window).on('load', function()
         {
+            addIndex();
+
             KINOUT.init();
 
             $$('ul li a').each(function()
@@ -516,6 +518,51 @@
                 });
             }
     });
+
+    function addIndex()
+    {
+        var section = $('<section></section>');
+        var article = $('<article></article>');
+        var ul = $('<ul></ul>');
+
+        var li = $('<li><h2>Indizea: </h2></li>');
+        ul.append(li);
+
+        var i = 2;
+
+        $('section').each(function()
+        {
+            var head = $('header', $(this)).first().text();
+            if(head!=='')
+            {
+                var li = $('<li><a href="#/'+i+'">'+head+'</a></li>');
+                ul.append(li);    
+
+                var article = $('article > header', $(this));
+                if(article.length>1)
+                {
+                    var li = $('<li></li>');
+                    var ol = $('<ol></ol>');
+                    var j = 1;
+
+                    article.each(function()
+                    {
+                        var li = $('<li><a href="#/'+i+'/'+j+'">'+$(this).text()+'</a></li>');
+                        ol.append(li);
+                        j++;
+                    });
+                    li.append(ol);
+                    ul.append(li);
+                }
+                i++;
+            }
+        });
+
+        article.append(ul);
+        section.append(article);
+
+        $('section').first().after(section);
+    }
 </script>
 <script type="text/javascript" src="resources/js/rainbow/rainbow.min.js"></script>
 <script type="text/javascript" src="resources/js/rainbow/language/generic.js"></script>
