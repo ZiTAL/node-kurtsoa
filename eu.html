@@ -458,8 +458,109 @@
         </section>
         <section>
             <header class="box"><h2>Moduloak</h2></header>
+            <article>                
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    module.exports =
+    {
+        main: function()
+        {
+            console.log('main');
+        }
+    }
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = require('moduloa.js');
+
+    // edota 
+
+    var moduloa = require('moduloa');
+
+    moduloa.main();
+
+                </code>
+                </pre>                                      
+            </article>
             <article>
-                
+                <header class="box white"><h4>beste era batera</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = 
+    {
+        main: function()
+        {
+            console.log('main');
+        }
+    }
+
+    module.exports = moduloa;
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>object vs function</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+var moduloa =
+{
+        main: function()
+        {
+                this.name = 'nodejs kurtsoa';
+        }
+}
+
+module.exports = moduloa;
+
+                </code>
+                </pre> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+
+var moduloa = require('./moduloa');
+var moduloa2 = require('./moduloa');
+
+moduloa.main();
+
+console.log(moduloa2.name);
+                </code>
+                </pre>                
+            </article>            
+            <article>
+               <header class="box white"><h4>object vs function 2</h4></header> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = function()
+    {
+            this.main = function()
+            {
+                    this.name = 'nodejs kurtsoa';
+            }
+    };
+
+    module.exports = moduloa;
+                </code>
+                </pre> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = require('./moduloa');
+
+    var a = new moduloa();
+    var b = new moduloa();
+
+    a.main();
+
+    console.log(a.name);
+    console.log(b.name);  
+                </code>
+                </pre>                                             
+            </article>
+            <article>
+                <header class="box white"><h4>zelan erabili?</h4></header> 
+                <p>
+                    Singleton-ak erabiltzeko objectuak sortu, ostera erabili funtzioak
+                </p>
             </article>
         </section>
         </div>        
