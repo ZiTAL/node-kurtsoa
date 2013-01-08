@@ -557,10 +557,71 @@ console.log(moduloa2.name);
                 </pre>                                             
             </article>
             <article>
-                <header class="box white"><h4>zelan erabili?</h4></header> 
+                <header class="box white"><h4>Singleton: zelan erabili?</h4></header> 
                 <p>
-                    Singleton-ak erabiltzeko objectuak sortu, ostera erabili funtzioak
+                    Singleton-ak erabiltzeko edo funtzio estatikoak erabiltzeko: objectuak.
                 </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var class_instance = function()
+    {
+        var private_var;
+        this.public_var;
+
+        var private_method = function()
+        {
+            console.log('private method');
+        };
+
+        this.public_method = function()
+        {
+            console.log('public method');
+            new private_method();
+        }
+
+        this.__construct = function()
+        {
+            console.log('__construct');
+            this.public_method();
+        }
+        this.__construct();
+    };
+
+    module.exports = class_instance;
+                </code>
+                </pre>
+
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    var a = require('./class_instance');
+                    var b = new a();
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>Funtzio estatikoak: zelan erabili?</h4></header> 
+                <p>
+                    Mota bardiñeko objetu ezberdiñak sortzeko: funtzioa estatikoak.
+                </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    var singleton = 
+                    {
+                        main: function()
+                        {
+                            console.log('main');
+                        }
+                    };
+
+                    module.exports = singleton;
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    var a = require('./singleton');
+                    a.main();
+                </code>
+                </pre>                                
             </article>
         </section>
         </div>        
