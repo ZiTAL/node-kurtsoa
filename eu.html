@@ -840,6 +840,7 @@ console.log(moduloa2.name);
         ul.append(li);
 
         var i = 2;
+        var k = 0;
 
         $('section').each(function()
         {
@@ -865,12 +866,13 @@ console.log(moduloa2.name);
                     li.append(ol);
                     ul.append(li);
                 }
+                k++;
                 i++;
-                if(i>9)
+                if(k>9)
                 {
                     _article.append(ul);                    
                     ul = $('<ul></ul>');
-                    i = 0;
+                    k = 0;
                 }
             }
         });
