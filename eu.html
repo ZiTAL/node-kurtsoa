@@ -626,6 +626,95 @@ console.log(moduloa2.name);
                 </pre>                                
             </article>
         </section>
+        <section>
+            <header class="box"><h2>NPM</h2></header>
+            <article>
+                <header class="box white"><h4>bilatu</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm search node-static
+                    npm search socket.io
+                    ...
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>instalatu</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm install node-static
+                    npm install socket.io
+                </code>
+                </pre>                                
+            </article>
+            <article>
+                <header class="box white"><h4>nodejs-ren PATH-ean instalatu</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm install -g node-static
+                    npm install -g socket.io
+                </code>
+                </pre>                                
+                <p>Gure proiektuan erabiltzeko:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm link node-static
+                    npm link socket.io
+                </code>
+                </pre> 
+            </article>            
+        </section>
+        <section>
+            <header class="box"><h2>SYNC vs ASYNC</h2></header>
+            <article>
+                <header class="box white"><h4>adibide sinpleak</h4></header>
+                <p>sync code:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var fs = require('fs');
+
+    var file = fs.readFileSync('a.txt', 'utf-8');
+
+    if(file)
+            console.log(file);
+                </code>
+                </pre>                                        
+                <p>async code:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var fs = require('fs');
+
+    fs.readFile('a.txt', 'utf-8', function(err, data)
+    {
+            if(err)
+                    throw err;
+
+            console.log(data);
+    });
+                </code>
+                </pre>                        
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>Events: Gertaera bultzaerak</h2></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">            
+    var emitter = require('events').EventEmitter;
+
+    var e = new emitter();
+
+    e.on('hartu', function(data)
+    {
+        console.log(data);
+    });
+
+    setInterval(function()
+    {
+        e.emit('hartu', Date.now());            
+    }, 1000);    
+                </code>
+                </pre>
+        </section>
         </div>        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
         <script type="text/javascript" src="resources/js/socket.io.js"></script>
