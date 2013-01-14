@@ -17,63 +17,6 @@
                 <h1>node<mark>JS</mark> kurtsoa</h1>            
             </article>
         </section>
-        <!--
-        <section>
-            <article>
-                <ul>
-                    <li><h2>Indizea: </h2></li>
-                    <li><a href="#/">hasiera</a></li>
-                    <li><a href="#/1">Indizea</a></li>
-                    <li><a href="#/2">nodejs-ri buruz</a></li>
-                    <li>
-                        <ol>
-                            <li><a href="#/2/1">Zer da?</a></li>
-                            <li><a href="#/2/2">Egileari buruz: Ryan Dahl</a></li>
-                            <li><a href="#/2/3">Ryan Dahl esandako zita pare bat</a></li>
-                        </ol>
-                    </li>
-                    <li><a href="#/3">Zelan instalatu</a></li>
-                    <li>
-                        <ol>
-                            <li><a href="#/3/1">gnu/linux</a></li>
-                            <li><a href="#/3/2">windows eta osx</a></li>
-                        </ol>
-                    </li>
-                    <li><a href="#/4">Kontsolan lanean</a></li>
-                    <li>
-                        <ol>
-                            <li><a href="#/4/1">Aldagai globalak</a></li>
-                        </ol>
-                    </li>
-                    
-                    <li><a href="#/5">Hello World</a></li>
-                    <ol>
-                        <li><a href="#/5/1">Hello World 2</a></li>
-                    </ol>
-                    <li><a href="#/6">Web zerbitzaria</a></li>
-                    <li>
-                        <ol>
-                            <li><a href="#/6/1">Goiburuak</a></li>
-                            <li><a href="#/6/2">Goiburuen esanahiak</a></li>
-                            <li><a href="#/6/3">Erantzuna atzeratzen</a></li>
-                            <li><a href="#/6/4">"Apache benchmark" estres tesak egiteko</a></li>
-                        </ol>
-                    </li>
-                    <li><a href="#/7">TCP server</a></li>
-                    <ol>
-                        <li><a href="#/7">txat sinplea</a></li>
-                        <li><a href="#/7">deskonektatutako bezeroak kendu</a></li>
-                    </ol>
-                    <li><a href="#/8">Debug</a></li>
-                    <ol>
-                        <li><a href="#/8/1">Kontsolatik debugeatu</a></li>
-                    </ol>
-                    <li><a href="#/9">non-blocking adibide bat</a></li>
-                    <li><a href="#/10">Moduloak</a></li>
-                </ul>
-            </article>
-        </section>
-        -->
         <!-- #/2 nodejs-ri buruz -->
         <section>
             <header class="box">
@@ -500,6 +443,27 @@
                 </pre>                
             </article>
             <article>
+                <header class="box white"><h4>module.exports vs exports</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    module.exports = {};
+                    ...
+                    var module = require('module');
+                </code>
+                </pre>             
+
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    exports.module = {};
+                    exports.a = {};
+                    ...
+                    var parent = require('module');
+                    var module = parent.module;
+                    var a = parent.a;
+                </code>
+                </pre>                                                               
+            </article>             
+            <article>
                 <header class="box white"><h4>object vs function</h4></header>
                 <pre class="margin-top" contenteditable="true">
                 <code data-language="javascript">
@@ -772,6 +736,44 @@ console.log(moduloa2.name);
     }, 1000);    
                 </code>
                 </pre>
+        </section>
+        <section>
+            <header class="box"><h2>Socket.io</h2></header>
+            <article>
+            <blockquote>
+                Denbora errealean edozein nabigatzaileatan edo mobil sistemetan aplikazioak egiteko dauka helburu gisa. 100% javascript.
+            </blockquote>
+            <p>
+                <a href="http://socket.io/">http://socket.io/</a>
+            </p>
+            </article>
+            <article>
+                <header class="box white"><h4>Instalazioa</h4></header>
+                <p>Zerbitzarian: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+                    npm install socket.io
+                </code>
+                </pre>
+                <p>Bezeroan: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+                    cp node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js resources/js
+                </code>
+                </pre>
+
+                <p>index.html</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+                    ...
+                    <script type="text/javascript" src="resources/js/socket.io.js"></script>
+                    ...
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>Erabilera</h4></header>
+            </article>
         </section>
         </div>        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>

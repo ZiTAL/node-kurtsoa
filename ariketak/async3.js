@@ -11,7 +11,7 @@ fs.readFile('b.txt', 'utf-8', function(err, data)
 {
 	if(err)
 		throw err;
-	console.log(data);
+	console.log('b.txt irakurrita');
 });
 
 fs.readFile('c.txt', 'utf-8', function(err, data)
