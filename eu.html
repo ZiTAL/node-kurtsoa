@@ -773,6 +773,76 @@ console.log(moduloa2.name);
             </article>
             <article>
                 <header class="box white"><h4>Erabilera</h4></header>
+                <p>Zerbitzarian:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+    var io = require('socket.io').listen(1980);
+
+    io.sockets.on('connection', function (socket)
+    {
+        socket.emit('news', { hello: 'world' });
+        socket.on('my other event', function (data)
+        {
+            console.log(data);
+        });
+    });                    
+                </code>          
+                </pre>
+                <p>Bezeroan: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+
+    <!doctype html>
+    <html lang="eu">
+    <head>
+        <meta charset="utf-8">
+        <title>socket.io adibidea</title>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
+        <script type="text/javascript" src="../../resources/js/socket.io.js"></script>
+        <script type="text/javascript">
+        $(window).on('load', function()
+        {
+            var socket = io.connect("http://"+window.location.host+":"+"1980");
+            socket.on('news', function (data)
+            {
+                console.log(data);
+                socket.emit('my other event', { my: 'data' });
+            });
+        });
+        </script>
+    </head>
+    <body>
+    </body>
+    </html>                    
+                </code>
+                </pre>                    
+            </article>
+            <article>
+                <header class="box white"><h4>Zerbitzariagaz integrazioa</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var http = require('http');
+
+    var server = http.Server(function(req, res)
+    {
+            res.writeHead(200);
+            res.end('Kaixo zertan zabilz?');
+    });
+
+    var io = require('socket.io').listen(server, {log: false});
+
+    io.sockets.on('connection', function (socket)
+    {
+            socket.emit('news', { hello: 'world' });
+            socket.on('my other event', function (data)
+            {
+                    console.log(data);
+            });
+    });
+
+    server.listen(1980);
+
+                </code>                
             </article>
         </section>
         </div>        

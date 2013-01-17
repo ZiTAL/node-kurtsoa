@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="eu">
+<head>
+    <meta charset="utf-8">
+    <title>socket.io adibidea</title>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
+    <script type="text/javascript" src="../../resources/js/socket.io.js"></script>
+    <script type="text/javascript">
+    $(window).on('load', function()
+    {
+		var socket = io.connect("http://"+window.location.host+":"+"1980");
+		socket.on('news', function (data)
+		{
+			console.log(data);
+			socket.emit('my other event', { my: 'data' });
+		});    	
+    });
+    </script>
+</head>
+<body>
+</body>
+</html>

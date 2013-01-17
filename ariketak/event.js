@@ -7,7 +7,4 @@
         console.log(data);
     });
 
-    setInterval(function()
-    {
-        e.emit('hartu', Date.now());            
-    }, 1000);    
+module.exports = e;
