@@ -626,7 +626,16 @@ console.log(moduloa2.name);
                     npm link socket.io
                 </code>
                 </pre> 
-            </article>            
+            </article>
+            <article>
+                <header class="box white"><h4>kendu</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm uninstall -g node-static
+                    npm uninstall socket.io
+                </code>
+                </pre>                                
+            </article>                        
         </section>
         <section>
             <header class="box"><h2>SYNC vs ASYNC</h2></header>
@@ -790,12 +799,6 @@ console.log(moduloa2.name);
                 <p>Bezeroan: </p>
                 <pre class="margin-top" contenteditable="true">
                 <code data-language="javascript">    
-
-    <!doctype html>
-    <html lang="eu">
-    <head>
-        <meta charset="utf-8">
-        <title>socket.io adibidea</title>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
         <script type="text/javascript" src="../../resources/js/socket.io.js"></script>
         <script type="text/javascript">
@@ -809,10 +812,6 @@ console.log(moduloa2.name);
             });
         });
         </script>
-    </head>
-    <body>
-    </body>
-    </html>                    
                 </code>
                 </pre>                    
             </article>
@@ -841,8 +840,133 @@ console.log(moduloa2.name);
 
     server.listen(1980);
 
-                </code>                
+                </code>  
+                </pre>              
             </article>
+        </section>
+        <section>
+            <header class="box"><h2>MongoDB Datu basea</h2></header>
+            <article>
+                <blockquote>
+                    Mondodb dokumentueri zuzendutako datu base sistema da. NoSQL familiko datu base sistema. Datu base klasikoak ez bezala, ez da euren arteko erlazioa daukaten tauletan gordetzen, JSON formatuko BSON (Binary JSON) eskema dinamikodun estruktura dokumentuean gordetzen dira, aplikazio mota batzuetan errazago eta ariñago lan egiten lagunduz.
+                </blockquote>            
+            </article>
+            <article>
+                <header class="box white"><h4>instalazioa</h4></header>
+                <p>gnu/linux motatako zerbitzarietan:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    aptitude install mongodb
+                    pacman -S mongodb
+                    ...
+                </code>  
+                </pre>
+                <p>Beste sistemetan: windows, osx... <a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
+                <p>Bezeroa:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    npm install node-gyp
+                    npm install mongodb
+                </code>  
+                </pre>                   
+            </article>
+            <article>
+                <header class="box white"><h4>mongo kontsola</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    mongo
+                </code>  
+                </pre> 
+                <p>Erakutsi datu baseen zerrenda:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db
+                </code>  
+                </pre>
+                <p>Aukeratu datu basea:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    use test
+                </code>
+                </pre>
+                <p>Sortu "collection"-a (taula):</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.createCollection('kurtsoa')
+                </code>
+                </pre>                                                  
+            </article>
+            <article>
+                <header class="box white"><h4>datuak sartu/ezabatu</h4></header>
+                <p>sartu:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.save({nick: 'foo', hizkuntzak: ['js', 'php', 'python']});
+                    var a = {nick: 'foo2', hizkuntzak: ['java', 'brainfuck']};
+                    db.kurtsoa.save(a);
+                </code>
+                </pre>                                                             
+                <p>ezabatu:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.remove({nick: 'foo'});
+                </code>
+                </pre>                                                                
+            </article> 
+            <article>
+                <header class="box white"><h4>datuak eguneratu</h4></header>
+                <p>zer gertzatzen dau hau egiten badogu?</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.update({nick: 'foo2'}, {hizkuntzak: ["php", "python"]})
+                    db.kurtsoa.find();
+                </code>
+                </pre>  
+                <p>hobeago: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.update({nick: 'foo2'}, {nick: 'foo2', {hizkuntzak: ["php", "python"]})
+                    db.kurtsoa.find();
+                </code>
+                </pre>
+                <p>ondo: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.update({nick: 'foo2'}, {$set: {hizkuntzak: ["php", "python"]}});
+                    db.kurtsoa.find();
+                </code>
+                </pre>                             
+            </article>
+            <article>
+                <header class="box white"><h4>datuak bilatu</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.find();
+                </code>
+                </pre>         
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    Query Operators:
+
+                    $gt is one of many special query operators. Here are few others:
+                    $lt  - '<',   $lte - '<=', 
+                    $gte - '>=',  $ne  - '!='
+
+                    $in - 'is in array',  $nin - '! in array'
+
+                    $regex - 'regular expression'
+                </code>
+                </pre>                                         
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.find({nick: 'foo2'});
+
+                    db.kurtsoa.find({hizkuntzak: {'$in': ['php']}});
+
+                    db.kurtsoa.find({nick: {'$regex': /^f/i}});
+                </code>
+                </pre>                                                         
+            </article>         
         </section>
         </div>        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
