@@ -966,7 +966,26 @@ console.log(moduloa2.name);
                     db.kurtsoa.find({nick: {'$regex': /^f/i}});
                 </code>
                 </pre>                                                         
-            </article>         
+            </article> 
+            <article>
+                <header class="box white"><h4>mysql -> mongodb</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="sql">
+                    select * from table order by a
+                </code>
+                </pre>                                                                         
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="sql">
+                    db.table.find().sort(
+                    {
+                        "a": 1
+                    });
+                </code>
+                </pre>                                                                                         
+                <p>
+                    <a href="http://www.querymongo.com/">http://www.querymongo.com</a>
+                </p>
+            </article>        
         </section>
         </div>        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
