@@ -593,6 +593,11 @@ console.log(moduloa2.name);
         <section>
             <header class="box"><h2>NPM</h2></header>
             <article>
+            <blockquote>
+                Pakete kudeatzailea. Node programak instalatu, publikatu eta kudeatzeko.
+            </blockquote>
+            </article>
+            <article>
                 <header class="box white"><h4>bilatu</h4></header>
                 <pre class="margin-top" contenteditable="true">
                 <code data-language="javascript">                
@@ -635,7 +640,45 @@ console.log(moduloa2.name);
                     npm uninstall socket.io
                 </code>
                 </pre>                                
-            </article>                        
+            </article>    
+            <article>
+                <header class="box white"><h4>Geuk egindakoa npm-ra publikatu</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var zital_proba = function()
+    {
+            this.__construct = function()
+            {
+                    console.log('zital-proba');
+            };
+            this.__construct();
+    };
+
+    module.exports = zital_proba;                    
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">       
+                    npm adduser
+                    npm init
+                    ...
+                    package name: zital-proba
+                    ...
+                    package version: (0.0.0): 0.0.1
+                    ...
+                    Main module/entry point: (none): ./zital-proba.js
+                    ...
+                    npm publish
+                </code>
+                </pre>                
+            </article>   
+            <article>
+                <header class="box white"><h4>Geuk egindakoa npm-tik kendu</h4></header>             <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">                      
+                    npm unpublish zital-proba@0.0.1
+                </code>
+                </pre>
+            </article>                 
         </section>
         <section>
             <header class="box"><h2>SYNC vs ASYNC</h2></header>
