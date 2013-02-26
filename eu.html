@@ -775,24 +775,43 @@ console.log(moduloa2.name);
             </article>
         </section>
         <section>
-            <header class="box"><h2>Events: Gertaera bultzaerak</h2></header>
+            <header class="box"><h2>Events: Sortu</h2></header>
+		<article>
                 <pre class="margin-top" contenteditable="true">
                 <code data-language="javascript">            
     var emitter = require('events').EventEmitter;
-
     var e = new emitter();
 
-    e.on('hartu', function(data)
+    function log(text)
     {
-        console.log(data);
-    });
+      console.log(text);
+    }
+
+    e.on('hartu', log);
 
     setInterval(function()
     {
-        e.emit('hartu', Date.now());            
-    }, 1000);    
+        e.emit('hartu', Date.now());
+    }, 1000);
                 </code>
                 </pre>
+		</article>
+		<article>
+		<header class="box white"><h2>Kendu</h2></header>
+		<p>Okin kontutan "gertaera" batek funtzio 1 edo gehiago euki ahal dabe, horregaitik funtzioa pasatu behar deutsagu.
+		</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">            
+...
+
+    setTimeout(function()
+    {
+        e.removeListener('hartu', log);
+    }, 1000);
+...
+                </code>
+                </pre>
+		</article>
         </section>
         <section>
             <header class="box"><h2>Socket.io</h2></header>
