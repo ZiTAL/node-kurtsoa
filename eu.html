@@ -910,6 +910,30 @@ console.log(moduloa2.name);
                 </code>  
                 </pre>              
             </article>
+            <article>
+                <header class="box white"><h4>broadcast aukera ezberdinak</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+ // send to current request socket client
+ socket.emit('message', "this is a test");
+
+ // sending to all clients, include sender
+ io.sockets.emit('message', "this is a test");
+
+ // sending to all clients except sender
+ socket.broadcast.emit('message', "this is a test");
+
+ // sending to all clients in 'game' room(channel) except sender
+ socket.broadcast.to('game').emit('message', 'nice game');
+
+  // sending to all clients in 'game' room(channel), include sender
+ io.sockets.in('game').emit('message', 'cool game');
+
+ // sending to individual socketid
+ io.sockets.socket(socketid).emit('message', 'for your eyes only');                    
+                </code>
+                </pre>
+            <article>
         </section>
         <section>
             <header class="box"><h2>MongoDB Datu basea</h2></header>
