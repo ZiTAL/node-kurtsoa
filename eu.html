@@ -1076,7 +1076,111 @@ console.log(moduloa2.name);
                 <p>
                     <a href="http://www.querymongo.com/">http://www.querymongo.com</a>
                 </p>
-            </article>        
+            </article>  
+        </section>
+        <section>      
+            <header class="box"><h2>mongodb nodejs</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var databaseUrl = "test"; // "username:password@example.com/mydb"
+    var collections = ["test"];
+    var db = require("mongojs").connect(databaseUrl, collections);
+                </code>
+                </pre>     
+            </article>
+            <article>
+                <header class="box white"><h4>find</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    db.test.find({}, function(err, users)
+    {
+        if( err || users.length==0)
+            console.log("Not found");
+        else
+        {
+            users.forEach(function(user)    
+            {
+                console.log(user);
+            });
+        }
+    });
+                </code>
+                </pre>     
+            </article>            
+            <article>
+                <header class="box white"><h4>save</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+var a =
+{
+    name: 'CAISO SETAN SAVIS?'
+};
+
+db.test.save(a, function(err, saved)
+{
+    if(err)
+        console.log(err);
+    else
+        console.log(saved);
+});
+                </code>
+                </pre> 
+            </article>            
+            <article>
+                <header class="box white"><h4>update</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+db.test.update({name: "iban"}, {$set: {name: "operador"}}, {multi: true}, function(err, updated)
+{
+    if( err || !updated )
+        console.log("User not updated");
+    else
+        console.log("User updated");
+});
+                </code>
+                </pre> 
+            </article>                        
+        </section>
+        <section>
+            <header class="box"><h2>express</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">                                
+                    npm install express
+                    npm install ejs
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>example</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                                
+var http = require('http');
+var express = require('express');
+var app = express();
+
+app.configure(function()
+{
+    var public_path = __dirname +  "/public";
+    app.use(express.static(public_path));
+
+    app.set('views', __dirname + '/private/view');
+    app.set('view engine', 'ejs');
+});
+
+var http = http.createServer(app);
+http.listen(8000);
+
+app.get('/*', function(req, res)
+{
+    // html example
+    res.render('index');
+});
+                </code>
+                </pre> 
+
+            </article>
         </section>
         </div>        
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
