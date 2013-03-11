@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>mando</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="resources/js/socket.io.js"></script>
+	<script type="text/javascript">
+		$(window).on('load', function()
+		{
+var socket = io.connect("http://"+window.location.host+":"+"8000");
+			$('form > input').click(function(e)
+			{
+				var valor = $(this).val();
+				socket.emit('request', valor);
+			});
+		});
+	</script>
+</head>
+<body>
+	<form>
+		<input type="button" value="up" />
+		<input type="button" value="down" />
+		<input type="button" value="left" />
+		<input type="button" value="right" />
+	</form>
+</body>
+</html>
