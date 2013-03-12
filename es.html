@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="eu">
+<head>
+    <meta charset="utf-8">
+    <title>Curso nodeJS</title>
+
+    <link type="text/css" rel="stylesheet" href="resources/css/kinout-1.0.css">
+    <link type="text/css" rel="stylesheet" href="resources/css/theme.kinout.css">
+    <link type="text/css" rel="stylesheet" href="resources/css/rainbow/blackboard.css">
+</head>
+
+<body>
+    <div class="kinout">
+
+        <section>
+            <article>
+                <h1>curso<mark>nodeJS</mark></h1>            
+            </article>
+        </section>
+        <!-- #/2 nodejs-ri buruz -->
+        <section>
+            <header class="box">
+                <h2>sobre nodejs</h2>
+            </header>
+            <article data-size="middle">
+                <blockquote>
+			Node.js es una plataforma basada en el motor de javascript de Chrome, fácil para crear aplicaciones de red escalables.
+			Usa el modelo Entrada/salida non-blocking (no se bloquea) para crear aplicaciones livianas y eficaces.
+			Recomendado para compartir datos en tiempo real.
+                </blockquote>
+                <cite>http://nodejs.org</cite>                
+            </article>            
+            <article>
+                <header class="box white"><h4>Sobre el autor</h4></header>
+                <p><img src="http://i.imgur.com/Yvct6.png" alt="Ryan Dahl" title="Ryan Dahl" /></p>
+                <p>Ryan Dahl:</p>
+                <p>
+			Viendo que a javascript le faltaba una API de "push/pull" emepezo a crear nodejs.
+                </p>                
+            </article>
+            <article>
+                <header class="box white"><h4>Ryan Dahl esandako zita pare bat</h4></header>
+                <p>
+                <blockquote>
+			A veces hay que dejar de lado cosas buenas para lograr cosas geniales.
+                </blockquote>                
+                </p>
+                <p>
+                <blockquote>
+			La mayoría de veces la mejor solución lo tenemos delante de nuestras narices.
+                </blockquote>                
+                </p>
+                <cite>Ryan Dahl</cite>
+            </article>
+        </section>
+
+        <!-- #/3 Zelan instalatu -->
+        <section>
+            <header class="box"><h2>Instalación</h2></header>
+            <article>
+                <p>
+                    <img src="http://upload.wikimedia.org/wikipedia/en/a/a7/Nodejs_logo_light.png" />
+                </p>
+                <p>nodejs iturburutik konpilatuta edo sistemetarako prestatutako paketeekaz instalatu lei.</p>
+                <p>nodejs se puede instalar partiendo de las fuentes o mediante instaladores especificos para cada plataforma.</p>
+                <p><a href="http://www.nodejs.org">http://www.nodejs.org</a></p>
+            </article>
+            <article>
+                <header class="box white"><h4>gnu/linux</h4></header>
+                <p>
+                    debian:
+                </p>
+                <pre class="margin-top" contenteditable="true">
+                    aptitude install nodejs
+                </pre>
+                archlinux:
+                <pre class="margin-top" contenteditable="true">
+                    pacman -S nodejs
+                </pre>                                 
+            </article>
+            <article>
+                <header class="box white"><h4>Windows eta OSX</h4></header>
+                <p>Jarraitu web honetako instrukzioak:
+                <p>Seguid las instrucciones de la siguiente web:
+
+                    <a href="http://www.nodejs.org/download/">http://www.nodejs.org/download/</a>
+                </p>
+            </article>
+        </section>
+
+        <!-- #/4 Kontsolan lanean -->
+        <section>
+            <header class="box"><h2>Trabajando con la consola</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                node
+                > 
+
+                1 + 2
+                function  foo() { return 1 + 2}
+                foo()
+                </code>                
+                </pre>
+            </article>
+            <header class="box white"><h4>Variables globales</h4></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    console.log(this);
+                    process
+                    process.pid
+                    process.env
+                </code>
+                </pre>   
+            </article>                             
+        </section>    
+
+        <section>    
+	    <header class="box"><h2>Hello World</h2></header>        
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    setTimeout(function()
+                    {
+                        console.log('world');
+                    }, 2000);
+                    console.log('hello ');       
+                </code>             
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>Hello World 2</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    setInterval(function()
+                    {
+                        console.log('world');
+                    }, 2000);
+                    console.log('hello ');       
+                </code>             
+                </pre>
+            </article>                        
+        </section>
+        <section>
+            <header class="box"><h2>Servidor web</h2></header>
+            <article>                
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    var http = require('http');
+
+                    var server = http.createServer(function(req, res)
+                    {
+                            res.writeHead('200',
+                                    {
+                                            'content-type': 'text/plain'
+                                    }
+                            );
+                            res.end("hello world\n");
+                    });
+
+                    server.listen(8000);
+                </code>
+                </pre>               
+            </article>            
+            <article>
+                <header class="box white"><h4>Cabeceras</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    curl -i http://localhost:8000
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
+                    HTTP/1.1 200 OK
+                    content-type: text/plain
+                    Connection: keep-alive
+                    Transfer-Encoding: chunked
+
+                    hello world                    
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>Significado de las cabeceras</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
+                    Connection: keep-alive:
+                    Conexiones persistentes
+			
+                    Transfer-Encoding: chunked:
+                    Respuesta en partes
+                </code>
+                </pre>
+            </article>
+            <article> 
+                <header class="box white"><h4>Atrasando la respuesta</h4></header>               
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    var http = require('http');
+
+                    var server = http.createServer(function(req, res)
+                    {
+                        res.writeHead('200',
+                            {
+                                'content-type': 'text/plain'
+                            }
+                        );
+                        res.write("hello\n");
+                        setTimeout(function()
+                        {
+                            res.end("world\n")
+                        }, 1500);
+                    });
+
+                    server.listen(8000);
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>Test de estres con "Apache benchmark"</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    ab -n 100 -c 100 http://127.0.0.1:8000/
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    Concurrency Level:      100
+                    Time taken for tests:   1.523 seconds
+                    Complete requests:      100
+                    Failed requests:        0
+                    Write errors:           0
+                    Total transferred:      7600 bytes
+                    HTML transferred:       1200 bytes
+                    Requests per second:    65.66 [#/sec] (mean)
+                    Time per request:       1523.004 [ms] (mean)
+                    Time per request:       15.230 [ms] (mean, across all concurrent requests)
+                    Transfer rate:          4.87 [Kbytes/sec] received                    
+                </code>
+                </pre>                
+            </article>            
+        </section>
+        <section>
+            <header class="box"><h2>TCP server</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    var net = require('net');
+
+                    var server = net.createServer(function(socket)
+                    {
+                        socket.write("Hello\n");
+                        socket.end("world\n");
+                    });
+
+                    server.listen(8000);                    
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    nc localhost 8000
+                    telnet localhost 8000
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>chat simple</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    var net = require('net');
+
+                    var sockets = [];
+
+                    var server = net.createServer(function(socket)
+                    {
+                        sockets.push(socket);
+
+                        socket.on('data', function(data)
+                        {
+                            for(var i in sockets)
+                            {
+                                if(socket!=sockets[i])
+                                    sockets[i].write(data);
+                            }
+                        });
+                    });
+
+                    server.listen(8000);                    
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>quitar usuarios desconectados</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+            var net = require('net');
+
+            var sockets = [];
+
+            var server = net.createServer(function(socket)
+            {
+                sockets.push(socket);
+
+                socket.on('data', function(data)
+                {
+                    for(var i in sockets)
+                    {
+                        if(socket!=sockets[i])
+                            sockets[i].write(data);
+                    }
+                });
+
+                socket.on('end', function()
+                {
+                    // remove socket from array
+                    var index = sockets.indexOf(socket);
+                    if(index!='-1')
+                        sockets.splice(index, 1);       
+                });
+            });
+
+            server.listen(8000);                    
+                </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>Debug</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                function foo()
+                {
+                    debugger;
+                    return 1 + 2;
+                }
+
+                foo();
+                </code>
+                </pre>                    
+            </article>
+            <article>
+                <header class="box white"><h4>Debugear por consola</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    node debug node-debug.js
+                </code>
+                </pre>      
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
+                    < debugger listening on port 5858
+                    connecting... ok
+                    break in debug-example.js:7
+                      5 }
+                      6 
+                      7 foo();
+                      8 
+                      9 });
+                    debug>
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash"> 
+                    backtrace
+                    next
+                </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>ejemplo non-blocking</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    setInterval(function()
+    {
+        console.log('hello world');
+    }, 5000);
+
+
+    var http = require('http');
+
+    setInterval(function()
+    {
+        http.get(
+        {
+            host: 'google.com'
+        }, function(res)
+        {
+            console.log(res.headers);
+        });
+    }, 3000);
+
+    var server = http.createServer(function(req, res)
+    {
+        res.writeHead(200);
+
+        setTimeout(function()
+        {
+            res.end("Web server response");
+        }, 1000);
+    });
+
+    server.listen(8000);
+                </code>
+                </pre>
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>Modulos</h2></header>
+            <article>                
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    module.exports =
+    {
+        main: function()
+        {
+            console.log('main');
+        };
+    }
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = require('moduloa.js');
+
+    // edota 
+
+    var moduloa = require('moduloa');
+
+    moduloa.main();
+
+                </code>
+                </pre>                                      
+            </article>
+            <article>
+                <header class="box white"><h4>de otro modo</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = 
+    {
+        main: function()
+        {
+            console.log('main');
+        };
+    }
+
+    module.exports = moduloa;
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>module.exports vs exports</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    module.exports = {};
+                    ...
+                    var module = require('module');
+                </code>
+                </pre>             
+
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    exports.module = {};
+                    exports.a = {};
+                    ...
+                    var parent = require('module');
+                    var module = parent.module;
+                    var a = parent.a;
+                </code>
+                </pre>                                                               
+            </article>             
+            <article>
+                <header class="box white"><h4>object vs function</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+var moduloa =
+{
+        main: function()
+        {
+                this.name = 'nodejs kurtsoa';
+        };
+}
+
+module.exports = moduloa;
+
+                </code>
+                </pre> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+
+var moduloa = require('./moduloa');
+var moduloa2 = require('./moduloa');
+
+moduloa.main();
+
+console.log(moduloa2.name);
+                </code>
+                </pre>                
+            </article>            
+            <article>
+               <header class="box white"><h4>object vs function 2</h4></header> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = function()
+    {
+            this.main = function()
+            {
+                    this.name = 'nodejs kurtsoa';
+            };
+    };
+
+    module.exports = moduloa;
+                </code>
+                </pre> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var moduloa = require('./moduloa');
+
+    var a = new moduloa();
+    var b = new moduloa();
+
+    a.main();
+
+    console.log(a.name);
+    console.log(b.name);  
+                </code>
+                </pre>                                             
+            </article>
+            <article>
+                <header class="box white"><h4>function en lugar de object para poder instanciar modulos</h4></header> 
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var class_instance = function()
+    {
+        var private_var;
+        this.public_var;
+
+        var private_method = function()
+        {
+            console.log('private method');
+        };
+
+        this.public_method = function()
+        {
+            console.log('public method');
+            new private_method();
+        };
+
+        this.__construct = function()
+        {
+            console.log('__construct');
+            this.public_method();
+        };
+        this.__construct();
+    };
+
+    module.exports = class_instance;
+                </code>
+                </pre>
+
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var a = require('./class_instance');
+    var b = new a();
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>Como usar "singleton"</h4></header> 
+                <p>
+                    Creando funciones estáticas dentro de un namespace.
+                </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var singleton = 
+    {
+        main: function()
+        {
+            console.log('main');
+        },
+        write: function(data)
+        {
+            console.log(data);
+        }
+    };
+
+    module.exports = singleton;
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var a = require('./singleton');
+    a.main();
+    a.write('proba');
+                </code>
+                </pre>                                
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>NPM</h2></header>
+            <article>
+            <blockquote>
+		Gestor de paquetes. Para instalar programas para node, publicarlas y gestionarlas.
+            </blockquote>
+            </article>
+            <article>
+                <header class="box white"><h4>buscar</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm search node-static
+                    npm search socket.io
+                    ...
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>instalar</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm install node-static
+                    npm install socket.io
+                </code>
+                </pre>                                
+            </article>
+            <article>
+                <header class="box white"><h4>instalar en el PATH de nodejs</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm install -g node-static
+                    npm install -g socket.io
+                </code>
+                </pre>                                
+                <p>Para poder usarlo en nuestro proyecto:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm link node-static
+                    npm link socket.io
+                </code>
+                </pre> 
+            </article>
+            <article>
+                <header class="box white"><h4>desinstalar</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+                    npm uninstall -g node-static
+                    npm uninstall socket.io
+                </code>
+                </pre>                                
+            </article>    
+            <article>
+                <header class="box white"><h4>Publicar un modulo hecho por nosotros</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var zital_proba = function()
+    {
+            this.__construct = function()
+            {
+                    console.log('zital-proba');
+            };
+            this.__construct();
+    };
+
+    module.exports = zital_proba;                    
+                </code>
+                </pre>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">       
+    npm adduser
+    npm init
+    ...
+    package name: zital-proba
+    ...
+    package version: (0.0.0): 0.0.1
+    ...
+    Main module/entry point: (none): ./zital-proba.js
+    ...
+    npm publish
+                </code>
+                </pre>                
+            </article>   
+            <article>
+                <header class="box white"><h4>Quitar un modulo de NPM</h4></header>             <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">                      
+    npm unpublish zital-proba@0.0.1
+                </code>
+                </pre>
+            </article>                 
+        </section>
+        <section>
+            <header class="box"><h2>SYNC vs ASYNC</h2></header>
+            <article>
+                <p>sync code:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var fs = require('fs');
+
+    var file = fs.readFileSync('a.txt', 'utf-8');
+
+    if(file)
+            console.log(file);
+                </code>
+                </pre>                                        
+                <p>async code:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var fs = require('fs');
+
+    fs.readFile('a.txt', 'utf-8', function(err, data)
+    {
+            if(err)
+                    throw err;
+
+            console.log(data);
+    });
+                </code>
+                </pre>                        
+            </article>
+            <article>
+                <header class="box white"><h4>async anidado</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var fs = require('fs');
+
+    fs.readFile('a.txt', 'utf-8', function(err, data)
+    {
+        if(err)
+            throw err;
+        console.log(data);
+
+        fs.readFile('b.txt', 'utf-8', function(err, data)
+        {   
+            if(err)
+                throw err;
+            console.log(data);      
+
+            fs.readFile('c.txt', 'utf-8', function(err, data)
+            {       
+                if(err)
+                    throw err;
+                console.log(data);
+            });         
+        });
+    });
+                </code>
+                </pre>
+            </article>
+            <article>
+                <header class="box white"><h4>async paralelo</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var fs = require('fs');
+
+    fs.readFile('a.txt', 'utf-8', function(err, data)
+    {
+        if(err)
+            throw err;
+        console.log(data);
+    });
+
+    fs.readFile('b.txt', 'utf-8', function(err, data)
+    {
+        if(err)
+            throw err;
+        console.log(data);
+    });
+
+    fs.readFile('c.txt', 'utf-8', function(err, data)
+    {
+        if(err)
+            throw err;
+        console.log(data);
+    });                    
+                </code>
+                </pre>                                
+            </article>
+        </section>
+        <section>
+            <header class="box"><h2>Events: Crear</h2></header>
+		<article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">            
+    var emitter = require('events').EventEmitter;
+    var e = new emitter();
+
+    function log(text)
+    {
+      console.log(text);
+    }
+
+    e.on('hartu', log);
+
+    setInterval(function()
+    {
+        e.emit('hartu', Date.now());
+    }, 1000);
+                </code>
+                </pre>
+		</article>
+		<article>
+		<header class="box white"><h2>Quitar</h2></header>
+		<p>Hay que tener en cuenta que un "evento" puede tener asignado más de una función, por eso tenemos que mandarle el nombre del mismo.
+		</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">            
+...
+
+    setTimeout(function()
+    {
+        e.removeListener('hartu', log);
+    }, 1000);
+...
+                </code>
+                </pre>
+		</article>
+        </section>
+        <section>
+            <header class="box"><h2>Socket.io</h2></header>
+            <article>
+            <blockquote>
+		Modulo para compartir datos en tiempo real entre navegadores y sistemas móviles, 100% javascript.
+            </blockquote>
+            <p>
+                <a href="http://socket.io/">http://socket.io/</a>
+            </p>
+            </article>
+            <article>
+                <header class="box white"><h4>Instalación</h4></header>
+                <p>En el servidor: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+                    npm install socket.io
+                </code>
+                </pre>
+                <p>En el cliente: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+                    cp node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.js resources/js
+                </code>
+                </pre>
+
+                <p>index.html</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+                    ...
+                    <script type="text/javascript" src="resources/js/socket.io.js"></script>
+                    ...
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>Uso</h4></header>
+                <p>En el servidor:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+    var io = require('socket.io').listen(1980);
+
+    io.sockets.on('connection', function (socket)
+    {
+        socket.emit('news', { hello: 'world' });
+        socket.on('my other event', function (data)
+        {
+            console.log(data);
+        });
+    });                    
+                </code>          
+                </pre>
+                <p>En el cliente: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
+        <script type="text/javascript" src="../../resources/js/socket.io.js"></script>
+        <script type="text/javascript">
+        $(window).on('load', function()
+        {
+            var socket = io.connect("http://"+window.location.host+":"+"1980");
+            socket.on('news', function (data)
+            {
+                console.log(data);
+                socket.emit('my other event', { my: 'data' });
+            });
+        });
+        </script>
+                </code>
+                </pre>                    
+            </article>
+            <article>
+                <header class="box white"><h4>Integración con el servidor</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+    var http = require('http');
+
+    var server = http.Server(function(req, res)
+    {
+            res.writeHead(200);
+            res.end('Kaixo zertan zabilz?');
+    });
+
+    var io = require('socket.io').listen(server, {log: false});
+
+    io.sockets.on('connection', function (socket)
+    {
+            socket.emit('news', { hello: 'world' });
+            socket.on('my other event', function (data)
+            {
+                    console.log(data);
+            });
+    });
+
+    server.listen(1980);
+
+                </code>  
+                </pre>              
+            </article>
+            <article>
+                <header class="box white"><h4>diferentes opciones de broadcast</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+ // send to current request socket client
+ socket.emit('message', "this is a test");
+
+ // sending to all clients, include sender
+ io.sockets.emit('message', "this is a test");
+
+ // sending to all clients except sender
+ socket.broadcast.emit('message', "this is a test");
+
+ // sending to all clients in 'game' room(channel) except sender
+ socket.broadcast.to('game').emit('message', 'nice game');
+
+  // sending to all clients in 'game' room(channel), include sender
+ io.sockets.in('game').emit('message', 'cool game');
+
+ // sending to individual socketid
+ io.sockets.socket(socketid).emit('message', 'for your eyes only');                    
+                </code>
+                </pre>
+            <article>
+        </section>
+        <section>
+            <header class="box"><h2>Base de datos MongoDB</h2></header>
+            <article>
+                <blockquote>
+		Mongodb es un sistema de base de datos orientado a documentos.
+		Es de la familia NoSQL. A diferencia de las bases de datos clasicas, no se guarda en tablas relacionadas entre si.
+		Se guardan en documentos de estructura dinámica del tipo BSON de formato JSON (Binary JSON),
+		ayudando a aplicaciones a trabajar más rápido y más fácil.
+                </blockquote>            
+            </article>
+            <article>
+                <header class="box white"><h4>instalación</h4></header>
+                <p>servidores tipo: gnu/linux</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    aptitude install mongodb
+                    pacman -S mongodb
+                    ...
+                </code>  
+                </pre>
+                <p>En otros sistemas: windows, osx... <a href="http://www.mongodb.org/downloads">http://www.mongodb.org/downloads</a></p>
+                <p>Cliente:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    npm install node-gyp
+                    npm install mongodb
+                </code>  
+                </pre>                   
+            </article>
+            <article>
+                <header class="box white"><h4>consola mongo</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">
+                    mongo
+                </code>  
+                </pre> 
+                <p>Mostrar la lista de bases de datos:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db
+                </code>  
+                </pre>
+                <p>Elegir la base de datos:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    use test
+                </code>
+                </pre>
+                <p>Crear una "collection" (tabla):</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.createCollection('kurtsoa')
+                </code>
+                </pre>                                                  
+            </article>
+            <article>
+                <header class="box white"><h4>guardar/borrar datos</h4></header>
+                <p>guardar:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.save({nick: 'foo', hizkuntzak: ['js', 'php', 'python']});
+                    var a = {nick: 'foo2', hizkuntzak: ['java', 'brainfuck']};
+                    db.kurtsoa.save(a);
+                </code>
+                </pre>                                                             
+                <p>borrar:</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.remove({nick: 'foo'});
+                </code>
+                </pre>                                                                
+            </article> 
+            <article>
+                <header class="box white"><h4>actualizar datos</h4></header>
+                <p>¿Qué pasa si hacemos lo siguiente?</p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.update({nick: 'foo2'}, {hizkuntzak: ["php", "python"]})
+                    db.kurtsoa.find();
+                </code>
+                </pre>  
+                <p>mejor: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.update({nick: 'foo2'}, {nick: 'foo2', {hizkuntzak: ["php", "python"]})
+                    db.kurtsoa.find();
+                </code>
+                </pre>
+                <p>bien: </p>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.update({nick: 'foo2'}, {$set: {hizkuntzak: ["php", "python"]}});
+                    db.kurtsoa.find();
+                </code>
+                </pre>                             
+            </article>
+            <article>
+                <header class="box white"><h4>buscar</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.find();
+                </code>
+                </pre>         
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    Query Operators:
+
+                    $gt is one of many special query operators. Here are few others:
+                    $lt  - '<',   $lte - '<=', 
+                    $gte - '>=',  $ne  - '!='
+
+                    $in - 'is in array',  $nin - '! in array'
+
+                    $regex - 'regular expression'
+                </code>
+                </pre>                                         
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">
+                    db.kurtsoa.find({nick: 'foo2'});
+
+                    db.kurtsoa.find({hizkuntzak: {'$in': ['php']}});
+
+                    db.kurtsoa.find({nick: {'$regex': /^f/i}});
+                </code>
+                </pre>                                                         
+            </article> 
+            <article>
+                <header class="box white"><h4>mysql -> mongodb</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="sql">
+                    select * from table order by a
+                </code>
+                </pre>                                                                         
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="sql">
+                    db.table.find().sort(
+                    {
+                        "a": 1
+                    });
+                </code>
+                </pre>                                                                                         
+                <p>
+                    <a href="http://www.querymongo.com/">http://www.querymongo.com</a>
+                </p>
+            </article>  
+        </section>
+        <section>      
+            <header class="box"><h2>mongodb nodejs</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    var databaseUrl = "test"; // "username:password@example.com/mydb"
+    var collections = ["test"];
+    var db = require("mongojs").connect(databaseUrl, collections);
+                </code>
+                </pre>     
+            </article>
+            <article>
+                <header class="box white"><h4>find</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+    db.test.find({}, function(err, users)
+    {
+        if( err || users.length==0)
+            console.log("Not found");
+        else
+        {
+            users.forEach(function(user)    
+            {
+                console.log(user);
+            });
+        }
+    });
+                </code>
+                </pre>     
+            </article>            
+            <article>
+                <header class="box white"><h4>save</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+var a =
+{
+    name: 'CAISO SETAN SAVIS?'
+};
+
+db.test.save(a, function(err, saved)
+{
+    if(err)
+        console.log(err);
+    else
+        console.log(saved);
+});
+                </code>
+                </pre> 
+            </article>            
+            <article>
+                <header class="box white"><h4>update</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                
+db.test.update({name: "iban"}, {$set: {name: "operador"}}, {multi: true}, function(err, updated)
+{
+    if( err || !updated )
+        console.log("User not updated");
+    else
+        console.log("User updated");
+});
+                </code>
+                </pre> 
+            </article>                        
+        </section>
+        <section>
+            <header class="box"><h2>express</h2></header>
+            <article>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="bash">                                
+                    npm install express
+                    npm install ejs
+                </code>
+                </pre>                
+            </article>
+            <article>
+                <header class="box white"><h4>example</h4></header>
+                <pre class="margin-top" contenteditable="true">
+                <code data-language="javascript">                                
+var http = require('http');
+var express = require('express');
+var app = express();
+
+app.configure(function()
+{
+    var public_path = __dirname +  "/public";
+    app.use(express.static(public_path));
+
+    app.set('views', __dirname + '/private/view');
+    app.set('view engine', 'ejs');
+});
+
+var http = http.createServer(app);
+http.listen(8000);
+
+app.get('/*', function(req, res)
+{
+    // html example
+    res.render('index');
+});
+                </code>
+                </pre> 
+
+            </article>
+        </section>
+        </div>        
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="resources/js/socket.io.js"></script>
+        <script type="text/javascript" src="resources/js/QuoJS.js"></script>
+        <script type="text/javascript" src="resources/js/raf.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Constants.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Element.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Events.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Router.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Step.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.Url.js"></script>
+        <script type="text/javascript" src="resources/js/Kinout.View.js"></script>
+        <script type="text/javascript">
+        $$(window).on('load', function()
+        {
+            addIndex();
+
+            KINOUT.init();
+
+            $$('ul li a').each(function()
+            {
+                var href = $$(this).attr('href');
+                if(href.match(/^#/gi))
+                {
+                    $$(this).on('click', function(e)
+                    {
+                        e.preventDefault();
+                        window.location.href = $$(this).attr('href');
+                        KINOUT.Url.read();
+                    });
+                }
+            });
+
+            $$('a').each(function()
+            {
+                var href = $$(this).attr('href');
+                if(href.match(/^http/gi))
+                {
+                    $$(this).on('click', function(e)
+                    {
+                        e.preventDefault();
+                        window.open($$(this).attr('href'));
+                    });
+                }
+            });
+
+            var socket = io.connect("http://"+window.location.host+":"+"1980");
+            if(typeof(socket)!='undefined')
+            {
+                socket.on('push', function(direction)
+                {
+                    KINOUT.Router.direction(direction);
+                });
+            }
+    });
+
+    function addIndex()
+    {
+        var section = $('<section></section>');
+        var _article = $('<article></article>');
+        var ul = $('<ul></ul>');
+
+        var li = $('<li><h2>Indizea: </h2></li>');
+        ul.append(li);
+
+        var i = 2;
+        var k = 0;
+
+        $('section').each(function()
+        {
+            var head = $('header', $(this)).first().text();
+            if(head!=='')
+            {
+                var li = $('<li><a href="#/'+i+'">'+head+'</a></li>');
+                ul.append(li);    
+
+                var article = $('article > header', $(this));
+                if(article.length>0)
+                {
+                    var li = $('<li></li>');
+                    var ol = $('<ol></ol>');
+                    var j = 1;
+
+                    article.each(function()
+                    {
+                        var li = $('<li><a href="#/'+i+'/'+j+'">'+$(this).text()+'</a></li>');
+                        ol.append(li);
+                        j++;
+                    });
+                    li.append(ol);
+                    ul.append(li);
+                }
+                k++;
+                i++;
+                if(k>8)
+                {
+                    _article.append(ul);                    
+                    ul = $('<ul></ul>');
+                    k = 0;
+                }
+            }
+        });
+
+        _article.append(ul);
+        section.append(_article);
+
+        $('section').first().after(section);
+    }
+</script>
+<script type="text/javascript" src="resources/js/rainbow/rainbow.min.js"></script>
+<script type="text/javascript" src="resources/js/rainbow/language/generic.js"></script>
+</body>
+</html>
